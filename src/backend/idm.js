@@ -18,6 +18,7 @@ import Axios from "axios";
  * login(request)
  * .then(response => alert(JSON.stringify(response.data, null, 2)));
  */
+
 export async function login(loginRequest) {
     const requestBody = {
         email: loginRequest.email,
@@ -26,10 +27,28 @@ export async function login(loginRequest) {
 
     const options = {
         method: "POST", // Method type ("POST", "GET", "DELETE", ect)
-        baseURL: Config.baseUrl, // Base URL (localhost:8081 for example)
+        baseURL: Config.idmBaseUrl, // Base URL (localhost:8081 for example)
         url: Config.idm.login, // Path of URL ("/login")
         data: requestBody // Data to send in Body (The RequestBody to send)
     }
 
     return Axios.request(options);
 }
+
+
+export async function registerService(registerRequest) {
+    const requestBody = {
+        email: registerRequest.email,
+        password: registerRequest.password
+    };
+
+    const options = {
+        method: "POST", // Method type ("POST", "GET", "DELETE", ect)
+        baseURL: Config.idmBaseUrl, // Base URL (localhost:8081 for example)
+        url: Config.idm.register, // Path of URL ("/register")
+        data: requestBody // Data to send in Body (The RequestBody to send)
+    }
+
+    return Axios.request(options);
+}
+

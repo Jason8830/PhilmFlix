@@ -1,6 +1,9 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import styled from "styled-components";
+import {useUser} from "hook/User";
+import {getCart} from "backend/billing"
+import SaleService from "service/SaleService";
 
 const StyledNav = styled.nav`
   display: flex;
@@ -34,6 +37,21 @@ const StyledNavLink = styled(NavLink)`
  * <li>Login - A link that will change the url of the page to "/login"
  */
 const NavBar = () => {
+    const {
+        accessToken, setAccessToken,
+        refreshToken, setRefreshToken
+    } = useUser();
+
+    const getOrder = () =>{
+        //this.SaleService.setData(accessToken);
+     //   new SaleService().setData(accessToken);
+
+        console.log("cnut");
+        SaleService.setData(accessToken);
+        console.log(SaleService.getData());
+      //  console.log(SaleService.getData());
+    }
+
     return (
         <StyledNav>
             <StyledNavLink to="/">
@@ -42,6 +60,24 @@ const NavBar = () => {
             <StyledNavLink to="/login">
                 Login
             </StyledNavLink>
+            <StyledNavLink to="/register">
+                Register
+            </StyledNavLink>
+
+            {accessToken && 
+            <StyledNavLink to="/search">
+                Search
+            </StyledNavLink>}
+
+            <StyledNavLink to="/cart">
+                Cart
+            </StyledNavLink>
+
+            
+            <StyledNavLink onClick = {getOrder} to="/order">
+                Order
+            </StyledNavLink>
+
         </StyledNav>
     );
 }

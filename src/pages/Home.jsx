@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import Grid from '@mui/material/Grid';
 
-const StyledDiv = styled.div` 
+const StyledDiv = styled.div`
+border: 1px solid red;
 `
 
 const StyledH1 = styled.h1`
@@ -10,7 +12,7 @@ const StyledH1 = styled.h1`
 const Home = () => {
     return (
         <div>
-            <h1>Home</h1>
+
         </div>
     );
 }

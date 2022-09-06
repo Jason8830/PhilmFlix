@@ -2,7 +2,7 @@ import React from "react";
 import {useUser} from "hook/User";
 import styled from "styled-components";
 import {useForm} from "react-hook-form";
-import {login} from "backend/idm";
+import {registerService} from "backend/idm";
 
 
 const StyledDiv = styled.div`
@@ -66,15 +66,11 @@ const StyledButton = styled.button`
  * This wraps our function and does some "pre-checks" before (This is useful if
  * you want to do some input validation, more of that in their documentation)
  */
-const Login = () => {
-    const {
-        accessToken, setAccessToken,
-        refreshToken, setRefreshToken
-    } = useUser();
+const Register = () => {
 
     const {register, getValues, handleSubmit} = useForm();
 
-    const submitLogin = () => {
+    const submitRegister = () => {
         const email = getValues("email");
         const password = getValues("password");
 
@@ -83,22 +79,18 @@ const Login = () => {
             password: password
         }
 
-        login(payLoad)
-            .then(response => {
-                setAccessToken(response.data.accessToken)
-                alert("Loggin In Successfully");
-            });
-        
+        registerService(payLoad)
+            .then(response => alert(JSON.stringify(response.data, null, 2)));
     }
 
     return (
         <StyledDiv>
-            <h1>Login</h1>
+            <h1>Register</h1>
             <input {...register("email")} type={"email"}/>
             <input {...register("password")} type={"password"}/>
-            <button onClick={handleSubmit(submitLogin)}>Login</button>
+            <button onClick={handleSubmit(submitRegister)}>Register</button>
         </StyledDiv>
     );
 }
 
-export default Login;
+export default Register;
