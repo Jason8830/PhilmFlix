@@ -5,9 +5,7 @@ import {UserProvider} from "hook/User";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+ 
   width: 100%;
   height: 100%;
 `

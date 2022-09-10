@@ -151,4 +151,3 @@ const Cart = ({movies}) => {
 }
 
 export default Cart;
-

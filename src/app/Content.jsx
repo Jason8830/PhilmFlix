@@ -15,15 +15,10 @@ import CheckOut from "pages/CheckOut";
 import {getSales} from "backend/billing"
 
 const StyledDiv = styled.div`
-  display: flex;
-  justify-content: center;
 
   width: 100vw;
   height: 100vh;
-  padding: 25px;
 
-  background: #ffffff;
-  box-shadow: inset 0 3px 5px -3px #000000;
 `
 
 /**

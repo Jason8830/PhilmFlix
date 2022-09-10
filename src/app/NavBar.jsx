@@ -4,24 +4,81 @@ import styled from "styled-components";
 import {useUser} from "hook/User";
 import {getCart} from "backend/billing"
 import SaleService from "service/SaleService";
+import logo from "../img/logo.png"
 
-const StyledNav = styled.nav`
+const Nav = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
   display: flex;
-  justify-content: center;
+  justify-content: end;
+  height: 60px;
+  padding: 0.5rem calc((100vw - 1000px)/2);
+  z-index:101;
+  background-color: #031f36;
+`;
 
-  width: calc(100vw - 10px);
-  height: 50px;
-  padding: 5px;
-
-  background-color: #fff;
+const NavMenu = styled.div`
+  display: flex;
+  margin-right:40px;
+  @media screen and (max-width:768){
+      display:none;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
-  padding: 10px;
+
   font-size: 25px;
-  color: #000;
+  color: white;
   text-decoration: none;
+  font-family: 'Pacifico', cursive;
 `;
+
+const NavLogo = styled(NavLink)`
+
+padding: 10px;
+margin-left:30px;
+font-size: 30px;
+position:absolute;
+left:0;
+top:.5;
+font-family:Righteous;
+letter-spacing: .2rem;
+background: #EA8D8D;
+background: linear-gradient(to left, #EA8D8D 24%, #A890FE 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+`;
+
+
+const Logo = styled.img`
+width:30px;
+height:30px;
+position:absolute;
+margin-left:10px;
+margin-top:2px;
+`;
+
+const NavButton = styled.div`
+display: flex;
+justify-content: end;
+
+`;
+
+const RegisterButton = styled.div`
+font-family: 'Pacifico', cursive;
+text-decoration:none;
+
+padding-left:10px;
+padding-bottom:15px;
+padding-top:0px;
+border-radius: 20px;
+border: 3px solid white;
+width: 90px;
+height: 30px;
+`
+
 
 /**
  * To be able to navigate around the website we have these NavLink's (Notice
@@ -43,28 +100,25 @@ const NavBar = () => {
     } = useUser();
 
     const getOrder = () =>{
-        //this.SaleService.setData(accessToken);
-     //   new SaleService().setData(accessToken);
 
-        console.log("cnut");
         SaleService.setData(accessToken);
         console.log(SaleService.getData());
-      //  console.log(SaleService.getData());
     }
 
     return (
-        <StyledNav>
-            <StyledNavLink to="/">
-                Home
-            </StyledNavLink>
-            <StyledNavLink to="/login">
-                Login
-            </StyledNavLink>
-            <StyledNavLink to="/register">
-                Register
+        <Nav>
+            <NavLogo to="/">
+                PhimFlix
+            <Logo src = {logo}/>
+            </NavLogo>
+            
+
+            <NavMenu>
+            <StyledNavLink style={{color:'#ea8d8d'}} to="/login">
+                login
             </StyledNavLink>
 
-            {accessToken && 
+            {/* {accessToken && 
             <StyledNavLink to="/search">
                 Search
             </StyledNavLink>}
@@ -76,9 +130,15 @@ const NavBar = () => {
             
             <StyledNavLink onClick = {getOrder} to="/order">
                 Order
-            </StyledNavLink>
+            </StyledNavLink> */}
+            </NavMenu>
 
-        </StyledNav>
+            <NavButton>
+            <StyledNavLink style={{color:'#b090f2'}} to="/register">
+                register
+            </StyledNavLink>
+            </NavButton>
+        </Nav>
     );
 }
 
