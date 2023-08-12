@@ -13,7 +13,7 @@ const Nav = styled.div`
   top: 0;
   display: flex;
   justify-content: end;
-  height: 60px;
+  height: 80px;
   padding: 0.5rem calc((100vw - 1000px)/2);
   z-index:101;
   background-color: #031f36;
@@ -108,15 +108,15 @@ const NavBar = () => {
     return (
         <Nav>
             <NavLogo to="/">
-                PhimFlix
+                FilmFlix
             <Logo src = {logo}/>
             </NavLogo>
             
 
             <NavMenu>
-            <StyledNavLink style={{color:'#ea8d8d'}} to="/login">
+            {/* <StyledNavLink style={{color:'#ea8d8d'}} to="/login">
                 login
-            </StyledNavLink>
+            </StyledNavLink> */}
 
             {/* {accessToken && 
             <StyledNavLink to="/search">
@@ -134,9 +134,9 @@ const NavBar = () => {
             </NavMenu>
 
             <NavButton>
-            <StyledNavLink style={{color:'#b090f2'}} to="/register">
+            {/* <StyledNavLink style={{color:'#b090f2'}} to="/register">
                 register
-            </StyledNavLink>
+            </StyledNavLink> */}
             </NavButton>
         </Nav>
     );

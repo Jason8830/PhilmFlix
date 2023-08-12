@@ -3,11 +3,27 @@ import {useUser} from "hook/User";
 import styled from "styled-components";
 import {useForm} from "react-hook-form";
 import {login} from "backend/idm";
+import TextField from '@mui/material/TextField';
+
 
 
 const StyledDiv = styled.div`
-  display: flex;
+display: flex;
   flex-direction: column;
+  width: 500px;
+  margin: auto; /* Horizontally centers the div */
+  align-items: center; /* Horizontally centers the content */
+`
+
+
+
+
+const Background = styled.div`
+    background-image: url(${require('../img/bg.png')});
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:100%
+
 `
 
 const StyledH1 = styled.h1`
@@ -92,12 +108,20 @@ const Login = () => {
     }
 
     return (
+        <Background>
         <StyledDiv>
-            <h1>Login</h1>
-            <input {...register("email")} type={"email"}/>
-            <input {...register("password")} type={"password"}/>
+            <h1 style={{marginTop:'400px',fontFamily:'Righteous',color:'white'}}>Login</h1>
+            <TextField {...register("email")} type={"email"} id="filled-basic" label="Email" variant="filled" style={{width:'400px',marginTop:'30px',marginBottom:'30px'}}/>
+            <TextField {...register("password")} type={"password"} id="filled-basic" label="Password" variant="filled" style={{width:'400px',marginTop:'30px',marginBottom:'30px'}}/>
+
+            {/* <input {...register("email")} type={"email"} style={{width:'400px',marginTop:'30px',marginBottom:'30px'}}/>
+            <input {...register("password")} type={"password"}/> */}
             <button onClick={handleSubmit(submitLogin)}>Login</button>
+        
         </StyledDiv>
+        </Background>
+
+        
     );
 }
 

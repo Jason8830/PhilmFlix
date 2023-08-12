@@ -10,6 +10,9 @@ import { CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import CardActions from '@mui/material/CardActions';
+import {NavLink} from "react-router-dom";
+
 
 const SEL = "custom-section";
 const SECTION_SEL = `.${SEL}`;
@@ -40,7 +43,6 @@ class Home extends React.Component {
       fullpages: [
         {
           text: "Section 1",
-          textYO: "yo",
         },
         {
           text: "Section 2",
@@ -64,7 +66,7 @@ class Home extends React.Component {
 
     const watch = "Watch Now.";
     const demand = "On Demand.";
-    const text = "yo";
+    const text = "Entertainment with Us.";
     return (
       <ReactFullpage
         debug /* Debug logging */
@@ -472,7 +474,57 @@ class Home extends React.Component {
 
             <div className={SEL}>
               <div className="section">
-                <h3>{text}</h3>
+
+                <h3 style={{color:'white'}}>{text}</h3>
+                <hr className="watch" />
+
+                {/* <p style={{marginLeft:'-900px',marginTop:'170px',fontSize:'50px',color:'white'}}><i> Browse and purchase movies with us.</i></p> */}
+                
+                <Box className="grid-spacing" style={{marginTop:'200px'}}sx={{ flexGrow: 1 }}>
+                  <Grid container spacing={3}>
+                    <Grid item sm={6} md={3}>
+                    <Card sx={{ maxWidth: 345 }}>
+                      <CardMedia
+                        sx={{ height: 350 }}
+                        image={require("../img/login.jpg")}
+                        title="green iguana"
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          Already A User?
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                        Welcome back! As a valued member of our community, you already have access to our exclusive range of content. Join us and enjoy the ultimate movie purchasing experience. 
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                      <Button size="large"><NavLink to="/login">Login</NavLink></Button>
+                      </CardActions>
+                    </Card>
+                    </Grid>
+                    <Grid item sm={6} md={3}>
+                    <Card sx={{ maxWidth: 345 }}>
+                      <CardMedia
+                        sx={{ height: 350 }}
+                        image={require("../img/register.jpg")}
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          New Here?
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                        Join the excitement! By registering with us, you'll gain access to a diverse collection of content that's bound to keep you captivated.
+                         Sign up today and dive into a universe of entertainment.                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button size="large"><NavLink to="/register">Register</NavLink></Button>
+                      </CardActions>
+                    </Card>
+                    </Grid>
+                   
+                  </Grid>
+                </Box>
+     
               </div>
             </div>
 
