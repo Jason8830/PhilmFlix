@@ -476,12 +476,11 @@ class Home extends React.Component {
               <div className="section">
 
                 <h3 style={{color:'white'}}>{text}</h3>
-                <hr className="watch" />
 
                 {/* <p style={{marginLeft:'-900px',marginTop:'170px',fontSize:'50px',color:'white'}}><i> Browse and purchase movies with us.</i></p> */}
-                
-                <Box className="grid-spacing" style={{marginTop:'200px'}}sx={{ flexGrow: 1 }}>
-                  <Grid container spacing={3}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                <Box className="grid-spacing" style={{width:'100%',marginTop:'200px'}}sx={{ flexGrow: 1 }}>
+                  <Grid container spacing={10}>
                     <Grid item sm={6} md={3}>
                     <Card sx={{ maxWidth: 345 }}>
                       <CardMedia
@@ -524,16 +523,11 @@ class Home extends React.Component {
                    
                   </Grid>
                 </Box>
-     
+                </div>
+
               </div>
             </div>
 
-
-            <div className={SEL}>
-              <div className="section">
-                <h3>{text}</h3>
-              </div>
-            </div>
           </ReactFullpage.Wrapper>
         )}
       />

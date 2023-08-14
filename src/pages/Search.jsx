@@ -7,7 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-
+import Grid from '@mui/material/Unstable_Grid2';
 import SearchParams from '../models/searchParams.js'
 import {movieSearch} from "backend/movie";
 import {useUser} from "hook/User";
@@ -136,8 +136,127 @@ const Search = () => {
 
     return (
         <>
-        
-        <div>
+        <div style={{marginTop: 200,display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Box sx={{flexGrow: 1, maxWidth:1200}}>
+      <Grid container spacing={6}>
+        <Grid xs={8}>
+        <FormControl variant="standard">
+          <TextField
+            sx={{width:700}}
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
+            id="input-with-icon-textfield"
+            label="Search for movies & titles"
+            variant="standard"
+          />
+        </FormControl>
+        </Grid>
+        <Grid xs={4}>
+          <Button onClick = {submitForm} sx={{marginTop:2, minWidth: 100, maxHeight: 50 }} variant="contained">Search</Button>
+        </Grid>
+
+       
+
+        <Grid xs={4}>
+        <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Order By</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={orderBy}
+          label="Order By"
+          onChange={handleOrderBy}
+        >
+          <MenuItem value={"title"}>Title</MenuItem>
+          <MenuItem value={"rating"}>Rating</MenuItem>
+          <MenuItem value={"year"}>Year</MenuItem>
+        </Select>
+        </FormControl>
+        </Grid>
+        <Grid xs={4}>
+        <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Direction</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={direction}
+          label="Direction"
+          onChange={handleDirection}
+        >
+          <MenuItem value={"asc"}>Ascending</MenuItem>
+          <MenuItem value={"desc"}>Descending</MenuItem>
+        </Select>
+        </FormControl>
+        </Grid>
+        <Grid xs={4}>
+        <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Limit</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={limit}
+          label="limit"
+          onChange={handleLimit}
+        >
+          <MenuItem value={10}>10</MenuItem>
+          <MenuItem value={25}>25</MenuItem>
+          <MenuItem value={50}>50</MenuItem>
+          <MenuItem value={100}>100</MenuItem>
+        </Select>
+        </FormControl>
+        </Grid>
+
+
+        <Grid xs={3}>
+        <FormControl variant="standard">
+          <TextField
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            id="input-with-icon-textfield"
+            label="Title"
+            variant="standard"
+          />
+        </FormControl>
+        </Grid>
+        <Grid xs={3}>
+        <FormControl variant="standard">
+          <TextField
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+            id="input-with-icon-textfield"
+            label="Year"
+            variant="standard"
+          />
+        </FormControl>
+        </Grid>
+        <Grid xs={3}>
+        <FormControl variant="standard">
+          <TextField
+            value={genre}
+            onChange={(e) => setGenre(e.target.value)}
+            id="input-with-icon-textfield"
+            label="Genre"
+            variant="standard"
+          />
+        </FormControl>
+        </Grid>
+        <Grid xs={3}>
+        <FormControl variant="standard">
+          <TextField
+            value={director}
+            onChange={(e) => setDirector(e.target.value)}
+            id="input-with-icon-textfield"
+            label="Director"
+            variant="standard"
+          />
+        </FormControl>
+        </Grid>
+
+      </Grid>
+    </Box>
+    </div>
+
+        <div style={{marginTop:200}}>
         <button onClick={handleView}>View</button>
         
         <div id = "table">
@@ -289,7 +408,6 @@ const Search = () => {
 
     <Box sx={{ minWidth: 300 , paddingLeft: 4}}>
       <FormControl variant="standard">
-
         <TextField
            value={director}
            onChange={(e) => setDirector(e.target.value)}

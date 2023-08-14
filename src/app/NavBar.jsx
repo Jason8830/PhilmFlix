@@ -118,7 +118,13 @@ const NavBar = () => {
                 login
             </StyledNavLink> */}
 
-            {/* {accessToken && 
+            {accessToken && 
+            <StyledNavLink to="/search">
+                Search
+            </StyledNavLink>}
+
+
+            {
             <StyledNavLink to="/search">
                 Search
             </StyledNavLink>}
@@ -130,7 +136,7 @@ const NavBar = () => {
             
             <StyledNavLink onClick = {getOrder} to="/order">
                 Order
-            </StyledNavLink> */}
+            </StyledNavLink>
             </NavMenu>
 
             <NavButton>
