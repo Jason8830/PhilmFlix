@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {useForm} from "react-hook-form";
 import {registerService} from "backend/idm";
 import TextField from '@mui/material/TextField';
-
+import Alert from '@mui/material/Alert';
 
 const StyledDiv = styled.div`
 display: flex;
@@ -12,6 +12,7 @@ display: flex;
   width: 500px;
   margin: auto; /* Horizontally centers the div */
   align-items: center; /* Horizontally centers the content */
+  margin-top:-250px;
 `
 
 
@@ -19,7 +20,7 @@ const Background = styled.div`
     background-image: url(${require('../img/bg.png')});
     background-repeat: no-repeat;
     background-size: cover;
-    height:100%
+    padding-bottom:117px;
 `
 const StyledH1 = styled.h1`
 `
@@ -80,6 +81,9 @@ const StyledButton = styled.button`
 const Register = () => {
 
     const {register, getValues, handleSubmit} = useForm();
+    const [showAlert, setShowAlert] = React.useState(false);
+    const [showAlert1, setShowAlert1] = React.useState(false);
+
 
     const submitRegister = () => {
         const email = getValues("email");
@@ -91,7 +95,14 @@ const Register = () => {
         }
 
         registerService(payLoad)
-            .then(response => alert(JSON.stringify(response.data, null, 2)));
+            .then(response => alert(JSON.stringify(response.data, null, 2)))
+            .catch(error=>{
+                if(error.response && error.response.status === 409){
+                    setShowAlert(true);
+                }else if(error.response && error.response.status === 400){
+                    setShowAlert1(true);
+                }
+            });
     }
 
     return (
@@ -103,6 +114,19 @@ const Register = () => {
 
             <button onClick={handleSubmit(submitRegister)}>Register</button>
         </StyledDiv>
+
+        {showAlert && (
+          <Alert sx ={{position:'absolute',marginLeft:2,marginTop:2,width:500,marginBottom:0}} severity="error" onClose={() => setShowAlert(false)}>
+            Error Email Already In Use.
+          </Alert>
+        )}
+
+        {showAlert1 && (
+                <Alert sx ={{position:'absolute',marginLeft:2,marginTop:2,width:500,marginBottom:0}} severity="error" onClose={() => setShowAlert1(false)}>
+                    Error Password does not meet the requirements.
+                </Alert>
+                )}
+
         </Background>
 
 

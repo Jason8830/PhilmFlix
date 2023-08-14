@@ -4,6 +4,8 @@ import styled from "styled-components";
 import {useForm} from "react-hook-form";
 import {login} from "backend/idm";
 import TextField from '@mui/material/TextField';
+import Alert from '@mui/material/Alert';
+
 
 
 
@@ -13,6 +15,7 @@ display: flex;
   width: 500px;
   margin: auto; /* Horizontally centers the div */
   align-items: center; /* Horizontally centers the content */
+  margin-top:-250px;
 `
 
 
@@ -22,8 +25,8 @@ const Background = styled.div`
     background-image: url(${require('../img/bg.png')});
     background-repeat: no-repeat;
     background-size: cover;
-    height:100%
-
+    padding-bottom:117px;
+    overflow: hidden; /* Hide scroll bars */
 `
 
 const StyledH1 = styled.h1`
@@ -83,12 +86,14 @@ const StyledButton = styled.button`
  * you want to do some input validation, more of that in their documentation)
  */
 const Login = () => {
+
     const {
         accessToken, setAccessToken,
         refreshToken, setRefreshToken
     } = useUser();
 
     const {register, getValues, handleSubmit} = useForm();
+    const [showAlert, setShowAlert] = React.useState(false);
 
     const submitLogin = () => {
         const email = getValues("email");
@@ -103,11 +108,17 @@ const Login = () => {
             .then(response => {
                 setAccessToken(response.data.accessToken)
                 alert("Loggin In Successfully");
-            });
+            })
+        .catch(error=>{
+            if(error.response && error.response.status === 401){
+                setShowAlert(true);
+            }
+        });
         
     }
 
     return (
+        <div className="hidden">
         <Background>
         <StyledDiv>
             <h1 style={{marginTop:'400px',fontFamily:'Righteous',color:'white'}}>Login</h1>
@@ -119,9 +130,15 @@ const Login = () => {
             <button onClick={handleSubmit(submitLogin)}>Login</button>
         
         </StyledDiv>
+
+        {showAlert && (
+          <Alert sx ={{position:'absolute',marginLeft:2,marginTop:2,width:500,marginBottom:0}} severity="error" onClose={() => setShowAlert(false)}>
+            User not found. Please check your credentials.
+          </Alert>
+        )}
         </Background>
 
-        
+        </div>
     );
 }
 
