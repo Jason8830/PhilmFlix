@@ -5,6 +5,8 @@ import {useForm} from "react-hook-form";
 import {registerService} from "backend/idm";
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
+import { useNavigate } from 'react-router-dom';
+
 
 const StyledDiv = styled.div`
 display: flex;
@@ -83,11 +85,12 @@ const Register = () => {
     const {register, getValues, handleSubmit} = useForm();
     const [showAlert, setShowAlert] = React.useState(false);
     const [showAlert1, setShowAlert1] = React.useState(false);
-
+    const navigate = useNavigate();
 
     const submitRegister = () => {
         const email = getValues("email");
         const password = getValues("password");
+        
 
         const payLoad = {
             email: email,
@@ -95,7 +98,16 @@ const Register = () => {
         }
 
         registerService(payLoad)
-            .then(response => alert(JSON.stringify(response.data, null, 2)))
+            .then(response =>{
+
+                const confirmation = window.confirm("User has been successfully registered!");
+                if (confirmation) {
+                    navigate('/login'); // Replace '/login' with your actual login page route
+                }
+                //alert("User has been sucessfully registered!")
+                //navigate('/login');
+                //alert(JSON.stringify(response.data, null, 2)))
+            }) 
             .catch(error=>{
                 if(error.response && error.response.status === 409){
                     setShowAlert(true);

@@ -5,7 +5,7 @@ import {useForm} from "react-hook-form";
 import {login} from "backend/idm";
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
-
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -94,6 +94,7 @@ const Login = () => {
 
     const {register, getValues, handleSubmit} = useForm();
     const [showAlert, setShowAlert] = React.useState(false);
+    const navigate = useNavigate();
 
     const submitLogin = () => {
         const email = getValues("email");
@@ -107,7 +108,7 @@ const Login = () => {
         login(payLoad)
             .then(response => {
                 setAccessToken(response.data.accessToken)
-                alert("Loggin In Successfully");
+                navigate('/search');
             })
         .catch(error=>{
             if(error.response && error.response.status === 401){

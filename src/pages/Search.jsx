@@ -12,8 +12,10 @@ import SearchParams from '../models/searchParams.js'
 import {movieSearch} from "backend/movie";
 import {useUser} from "hook/User";
 import {detailMovieSearch} from "backend/movie";
-
-import { DataGrid } from '@mui/x-data-grid';
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 
@@ -23,7 +25,10 @@ const Search = () => {
         accessToken, setAccessToken,
         refreshToken, setRefreshToken
     } = useUser();
-    
+    const [movies, setMovies] = React.useState([]);
+
+    const [searchButtonClicked,setSearchButtonClicked] = React.useState(false);
+
     const submitForm = () =>{          
         var query = new SearchParams();
 
@@ -51,25 +56,32 @@ const Search = () => {
 
         var response = movieSearch(accessToken,query);
 
-        response.then(value => setMovies(value.data.movies));
+        response.then(value => {
+          console.log(value.data.movies)
+          setMovies(value.data.movies)});
 
-        movies.map(movie => {
-          movie.backdropPath = "https://image.tmdb.org/t/p/original"+movie.backdropPath
-          movie.posterPath = "https://image.tmdb.org/t/p/original"+movie.posterPath
+        // movies.map(movie => {
+        //   movie.backdropPath = "https://image.tmdb.org/t/p/original"+movie.backdropPath
+        //   movie.posterPath = "https://image.tmdb.org/t/p/original"+movie.posterPath
 
-        }
-        );
-
-        
+        // }
+        // );
+        const updatedMovies = movies.map(movie => ({
+          ...movie,
+          backdropPath: "https://image.tmdb.org/t/p/original" + movie.backdropPath,
+          posterPath: "https://image.tmdb.org/t/p/original" + movie.posterPath
+        }));
+    
+        setMovies(updatedMovies);
         setSearchButtonClicked(true);
+        
+      
     };
 
 
     const navigate = useNavigate();
 
-    const [movies, setMovies] = React.useState([]);
-
-    const [searchButtonClicked,setSearchButtonClicked] = React.useState(false);
+  
 
    // This variable gets the input of the title/(keywords)
     const [userInput, setUserInput] = React.useState();
@@ -112,13 +124,12 @@ const Search = () => {
     };
 
 
-    const handleView =() =>{
+    const handleView =(id) =>{
 
-    console.log(selectedMovieId)          
-    var response = detailMovieSearch(accessToken,selectedMovieId);
+    var response = detailMovieSearch(accessToken,id);
     response.then(value =>{ 
       
-      navigate("/movie/"+selectedMovieId,{state:value.data});
+      navigate("/movie/"+id,{state:value.data});
  
     });
    
@@ -136,17 +147,18 @@ const Search = () => {
 
     return (
         <>
-        <div style={{marginTop: 200,display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <Box sx={{flexGrow: 1, maxWidth:1200}}>
-      <Grid container spacing={6}>
+        <div>
+        <div style={{margin:0,display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Box sx={{flexGrow: 1, marginTop:20,maxWidth:1000}}>
+      <Grid container spacing={4}>
         <Grid xs={8}>
         <FormControl variant="standard">
           <TextField
-            sx={{width:700}}
+            sx={{width:600}}
             value={userInput}
-            onChange={(e) => setUserInput(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
             id="input-with-icon-textfield"
-            label="Search for movies & titles"
+            label="Search for Movie Titles"
             variant="standard"
           />
         </FormControl>
@@ -210,17 +222,6 @@ const Search = () => {
         <Grid xs={3}>
         <FormControl variant="standard">
           <TextField
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            id="input-with-icon-textfield"
-            label="Title"
-            variant="standard"
-          />
-        </FormControl>
-        </Grid>
-        <Grid xs={3}>
-        <FormControl variant="standard">
-          <TextField
             value={year}
             onChange={(e) => setYear(e.target.value)}
             id="input-with-icon-textfield"
@@ -256,10 +257,7 @@ const Search = () => {
     </Box>
     </div>
 
-        <div style={{marginTop:200}}>
-        <button onClick={handleView}>View</button>
-        
-        <div id = "table">
+
 
         {/* <Box sx={{ minWidth: 120 }}>
         <FormControl fullWidth>
@@ -283,144 +281,39 @@ const Search = () => {
 
 
 
-<Box sx={{ minWidth: 300 , paddingLeft: 4}}>
-<FormControl variant="standard">
-
-  <TextField
-    value={title}
-    onChange={(e) => setTitle(e.target.value)}
-    id="input-with-icon-textfield"
-    label="Title"
-    variant="standard"
-  />
-</FormControl>
-</Box>
-
-
-    <Box sx={{ minWidth: 300 , paddingLeft: 4}}>
-      <FormControl variant="standard">
-
-        <TextField
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          id="input-with-icon-textfield"
-          label="Search"
-          variant="standard"
-        />
-      </FormControl>
-    </Box>
 
 
 
 
-
-    <Button onClick = {submitForm} sx={{ minWidth: 100, maxHeight: 50 }} variant="outlined">Search</Button>
-    
-
-
-
-
-
-    <Box sx={{ minWidth: 120, paddingLeft: 4 }}>
-        <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Order By</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={orderBy}
-          label="Order By"
-          onChange={handleOrderBy}
-        >
-          <MenuItem value={"title"}>Title</MenuItem>
-          <MenuItem value={"rating"}>Rating</MenuItem>
-          <MenuItem value={"year"}>Year</MenuItem>
-        </Select>
-        </FormControl>
-        </Box>
-
-
-
-        <Box sx={{ minWidth: 120, paddingLeft: 4 }}>
-        <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Direction</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={direction}
-          label="Direction"
-          onChange={handleDirection}
-        >
-          <MenuItem value={"asc"}>Ascending</MenuItem>
-          <MenuItem value={"desc"}>Descending</MenuItem>
-        </Select>
-        </FormControl>
-        </Box>
-
-
-
-        <Box sx={{ minWidth: 70, paddingLeft: 4}}>
-        <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Limit</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={limit}
-          label="limit"
-          onChange={handleLimit}
-        >
-          <MenuItem value={10}>10</MenuItem>
-          <MenuItem value={25}>25</MenuItem>
-          <MenuItem value={50}>50</MenuItem>
-          <MenuItem value={100}>100</MenuItem>
-        </Select>
-        </FormControl>
-        </Box>
-
+{searchButtonClicked && (
+        <div style={{margin:0,display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <Box sx={{flexGrow: 1,marginLeft:-10,marginTop:20, maxWidth:900}}>
+          <Grid container spacing={10}>
+            {movies.map(movie => (
+              <Grid xs={3}>
+                <div className="hover">
+                  <Card sx={{ marginTop:-3,maxHeight: 300,width: 200,borderRadius:5,border:"3px solid #031f36" }}>
+                          <Typography sx ={{pt:1,fontWeight:'bold', fontSize:15,textAlign:'center'}} gutterBottom variant="h6" component="div">
+                          {movie.title}
+                          </Typography>
+                          <CardActionArea onClick = {() => handleView(movie.id)}>
+                            <CardMedia
+                              component="img"
+                              height="270"
+                              image={'https://image.tmdb.org/t/p/original'+movie.posterPath}
+                              alt="Spooder-Man No Way Home"
+                            />
+                          </CardActionArea>
+                        </Card>
+                  </div>
+              </Grid>
+            ))}
+          </Grid>
+          </Box>
         </div>
-
-
-        <Box sx={{ minWidth: 300 , paddingLeft: 4}}>
-      <FormControl variant="standard">
-
-        <TextField
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-          id="input-with-icon-textfield"
-          label="Year"
-          variant="standard"
-        />
-      </FormControl>
-    </Box>
-
-    <Box sx={{ minWidth: 300 , paddingLeft: 4}}>
-      <FormControl variant="standard">
-
-        <TextField
-          value={genre}
-          onChange={(e) => setGenre(e.target.value)}
-          id="input-with-icon-textfield"
-          label="Genre"
-          variant="standard"
-        />
-      </FormControl>
-    </Box>
-
-
-    <Box sx={{ minWidth: 300 , paddingLeft: 4}}>
-      <FormControl variant="standard">
-        <TextField
-           value={director}
-           onChange={(e) => setDirector(e.target.value)}
-          id="input-with-icon-textfield"
-          label="Director"
-          variant="standard"
-        />
-      </FormControl>
-    </Box>
-
-
-<span>
-            { searchButtonClicked &&  <DataGrid
+      )}
+          
+            {/* { searchButtonClicked &&  <DataGrid
                 rows={movies}
                 sx = {{mt:10}}
                 columns={columns}
@@ -429,8 +322,9 @@ const Search = () => {
                 onSelectionModelChange={(move_id) => {
                   setSelectedMovieId(move_id[0]);
                 }}
-                />}
-</span>
+                />} */}
+                
+
 
 </div>
         </>

@@ -49,8 +49,43 @@ const MovieDetail = ({retrieveCart}) => {
 
 
     return (
-        <div>
-            <img id="poster" src={"https://image.tmdb.org/t/p/w500"+location.state.movie.posterPath}/>
+        
+        <>
+        
+        <div style={{ margin: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <h2 style={{position:'absolute',marginTop:-440,marginBottom:-90,color:'white',backgroundColor:'#081c34',padding:10,borderRadius:10}}>{location.state.movie.title}</h2>
+
+        
+         <img style={{marginTop:150,marginLeft:-100,maxWidth: 360, maxHeight: 400 }}src={"https://image.tmdb.org/t/p/w500"+location.state.movie.posterPath}/>
+
+          <img style={{marginLeft:40,marginTop:-26,maxWidth: 400, maxHeight: '100%' }} src={"https://image.tmdb.org/t/p/w500"+location.state.movie.backdropPath}/> 
+        
+        <h4 style={{marginLeft:30,fontSize:12, width:300}}><h4>Overview:</h4> {location.state.movie.overview}</h4>
+     
+        <h4 style={{marginTop:300,marginLeft:-730,fontSize:12, width:300}}><h4>Director:</h4> {location.state.movie.director}</h4>
+        <h4 style={{marginTop:300,marginLeft:-180,fontSize:12, width:300}}><h4>Rating:</h4> {location.state.movie.rating}</h4>
+        <h4 style={{marginTop:300,marginLeft:-180,fontSize:12, width:300}}><h4>Year:</h4> {location.state.movie.year}</h4>
+  
+        <FormControl style={{marginTop:300,marginLeft:-200,width:100}}>
+        <InputLabel id="demo-simple-select-label">Quantity</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={quantity}
+          label="Quantity"
+          onChange={handleQuantity}
+        >
+          <MenuItem value={1}>1</MenuItem>
+          <MenuItem value={2}>2</MenuItem>
+          <MenuItem value={3}>3</MenuItem>
+        </Select>
+      </FormControl>
+      <Button style = {{marginTop:300,marginLeft:50,height:50,width:100}} variant="contained" onClick={addItem}size="small" color="primary">
+        Add
+        </Button>
+
+        {/*<img  style= {{maxWidth: 360, maxHeight: '100%'}}src={"https://image.tmdb.org/t/p/w500"+location.state.movie.posterPath}/>  */}
+            {/* <img id="poster" src={"https://image.tmdb.org/t/p/w500"+location.state.movie.posterPath}/>
             
         <Card sx={{ maxWidth: 600 }}>
             <CardActionArea>
@@ -106,8 +141,9 @@ const MovieDetail = ({retrieveCart}) => {
             </CardActions>
             </Card>
                     
-           
+            */}
         </div>
+        </>
     );
 }
 

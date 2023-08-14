@@ -11,14 +11,12 @@
 }
 
 
-#poster{
-position: absolute;
-left:0;
-}
 
 .hidden{
   overflow: hidden;
 }
+
+
 .cart{
  display: flex;
  height: 600px;
