@@ -11,16 +11,16 @@ h3 {
 }
 .watch{
   top:0;
-  margin-top: 140px;
+  margin-top: 120px;
   margin-left: 200px;
   position: absolute;  
   border-top: 5px solid #031f36;
-  width: 400px;
+  width: 300px;
 }
 
 .demand{
     top:0;
-    margin-top: 250px;
+    margin-top: 200px;
     margin-left: 200px;
     position: absolute;  
     border-top: 5px solid #031f36;
@@ -40,9 +40,11 @@ h3 {
 .genre-button{
     background-color: #031f36;
     color: white;
-    font-size: 1rem;
+    font-size: 10px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 5px;
+    padding: 1px;
+    padding-top: 0;
+
 }
 
 .card-hr{
@@ -63,9 +65,9 @@ h3 {
 }
 
 .hover:hover {
-    -ms-transform: scale(1.2); /* IE 9 */
-    -webkit-transform: scale(1.2); /* Safari 3-8 */
-    transform: scale(1.2); 
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1); 
 }
 
 .tv-hover{

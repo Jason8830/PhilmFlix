@@ -83,20 +83,20 @@ class Home extends React.Component {
           <ReactFullpage.Wrapper>
             <div className={SEL}>
               <div className="slide">
-                <hr className="watch" />
-                <h3>{watch}</h3>
-                <Box className="grid-spacing" sx={{ flexGrow: 1 }}>
-                  <Grid container spacing={3}>
+                <hr className="watch"/>
+                <h3 style={{fontSize:40}}>{watch}</h3>
+                <Box className="grid-spacing" sx={{ marginTop:28,marginLeft:35,flexGrow: 1 }}>
+                  <Grid container spacing={4}>
                     <Grid item sm={6} md={3}>
                       <div className="hover">
-                        <Card sx={{ maxWidth: 300,borderRadius:5,border:"3px solid #031f36" }}>
-                          <Typography sx ={{pt:1,fontWeight:'bold'}} gutterBottom variant="h6" component="div">
+                        <Card sx={{ marginTop:-3,maxHeight: 400,maxWidth: 300,borderRadius:5,border:"3px solid #031f36" }}>
+                          <Typography sx ={{pt:1,fontWeight:'bold', fontSize:15}} gutterBottom variant="h6" component="div">
                             Spider Man No Way Home
                           </Typography>
                           <CardActionArea>
                             <CardMedia
                               component="img"
-                              height="350"
+                              height="200"
                               image={require("../img/spider.jpg")}
                               alt="Spooder-Man No Way Home"
                             />
@@ -104,6 +104,7 @@ class Home extends React.Component {
                               <Grid container spacing={1}>
                                 <Grid item sm={1} md={4}>
                                   <button className="genre-button">
+                          
                                     Action
                                   </button>
                                 </Grid>
@@ -114,21 +115,12 @@ class Home extends React.Component {
                                 </Grid>
                               </Grid>
 
-                              <Typography
-                                style={{
-                                  marginLeft: "-160px",
-                                  marginBottom: "5px",
-                                }}
-                                variant="h6"
-                                color="text.primary"
-                                component="div"
-                              >
-                                Description
-                              </Typography>
+          
                               <hr className="card-hr" />
                               <Typography
                                 variant="body2"
                                 color="text.secondary"
+                                style = {{fontSize:10}}
                               >
                                 When a spell goes wrong, dangerous foes from
                                 other worlds start to appear, forcing Peter to
@@ -142,15 +134,14 @@ class Home extends React.Component {
 
                     <Grid item sm={6} md={3}>
                       <div className="hover">
-
-                        <Card sx={{ maxWidth: 300,borderRadius:5,border:"3px solid #031f36" }}>
-                          <Typography sx ={{pt:1,fontWeight:'bold'}} gutterBottom variant="h6" component="div">
+                        <Card sx={{ marginTop:-3,maxHeight: 400,maxWidth: 300,borderRadius:5,border:"3px solid #031f36" }}>
+                          <Typography sx ={{pt:1,fontWeight:'bold',fontSize:15}} gutterBottom variant="h6" component="div">
                             Mulan
                           </Typography>
                           <CardActionArea>
                             <CardMedia
                               component="img"
-                              height="350"
+                              height="200"
                               image={require("../img/mulan.jpg")}
                               alt="Not As Good As OG Mulan Mulan"
                             />
@@ -173,21 +164,11 @@ class Home extends React.Component {
                                   </Grid>
                                 </Grid>
                               </Typography>
-                              <Typography
-                                style={{
-                                  marginLeft: "-160px",
-                                  marginBottom: "5px",
-                                }}
-                                variant="h6"
-                                color="text.primary"
-                                component="div"
-                              >
-                                Description
-                              </Typography>
                               <hr className="card-hr" />
                               <Typography
                                 variant="body2"
                                 color="text.secondary"
+                                style = {{fontSize:10}}
                               >
                                 To save her father from death in the army, a
                                 young maiden secretly goes in his place and
@@ -202,14 +183,14 @@ class Home extends React.Component {
 
                     <Grid item sm={6} md={3}>
                       <div className="hover">
-                        <Card sx={{ maxWidth: 300,borderRadius:5,border:"3px solid #031f36" }}>
-                          <Typography sx ={{pt:1,fontWeight:'bold'}} gutterBottom variant="h6" component="div">
+                        <Card sx={{ marginTop:-3,maxHeight: 400,maxWidth: 300,borderRadius:5,border:"3px solid #031f36" }}>
+                          <Typography sx ={{pt:1,fontWeight:'bold',fontSize:15}} gutterBottom variant="h6" component="div">
                             The Interview
                           </Typography>
                           <CardActionArea>
                             <CardMedia
                               component="img"
-                              height="350"
+                              height="200"
                               image={require("../img/interview.jpg")}
                               alt="The Interview"
                             />
@@ -232,21 +213,11 @@ class Home extends React.Component {
                                   </Grid>
                                 </Grid>
                               </Typography>
-                              <Typography
-                                style={{
-                                  marginLeft: "-160px",
-                                  marginBottom: "5px",
-                                }}
-                                variant="h6"
-                                color="text.primary"
-                                component="div"
-                              >
-                                Description
-                              </Typography>
                               <hr className="card-hr" />
                               <Typography
                                 variant="body2"
                                 color="text.secondary"
+                                style = {{fontSize:10}}
                               >
                                 Dave Skylark and his producer Aaron Rapaport run
                                 the celebrity tabloid show "Skylark Tonight".
@@ -265,13 +236,13 @@ class Home extends React.Component {
 
               <div className="slide">
                 <hr className="demand" />
-                <h3>{demand}</h3>
+                <h3 style={{fontSize:40}}>{demand}</h3>
      
-                <Box className="grid-spacing-demand" sx={{ flexGrow: 1 }}>
-                  <Grid sx={{width:"1500px"}} container spacing={5}>
-                    <Grid sx={{ maxWidth: "400px" }} item xs={4}>
+                <Box className="grid-spacing-demand" sx={{ marginTop:34,flexGrow: 1 }}>
+                  <Grid sx={{width:"800px"}} container spacing={5}>
+                    <Grid sx={{maxWidth: "400px" }} item xs={4}>
                       <div className="tv-hover">
-                      <Card sx={{ display: "flex" }}>
+                      <Card sx={{ height:200,display: "flex" }}>
                         <Box sx={{display: "flex", flexDirection: "column" }}>
                           <CardContent sx={{flex: "1 0 auto", pr: 11 }}>
                             <Typography sx={{whiteSpace: 'nowrap'}} component="div" variant="h5">
@@ -285,8 +256,8 @@ class Home extends React.Component {
                               Animation & Comedy
                             </Typography>
                             <hr className="tv-hr"/>
-                            <Box sx={{ textAlign: "left", pl: 1, pb: 1 }}>
-                            Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. Out in dangerous, outlandish adventures throughout space.
+                            <Box sx={{ fontSize:10,textAlign: "left", pl: 1, pb: 1 }}>
+                            Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family.
                             </Box>
                           </CardContent>
                         </Box>
@@ -303,7 +274,7 @@ class Home extends React.Component {
 
                     <Grid item sx={{ maxWidth: "400px" }} xs={4}>
                     <div className="tv-hover">
-                    <Card sx={{ display: "flex" }}>
+                    <Card sx={{ height:200,display: "flex" }}>
               
                         <Box sx={{ display: "flex", flexDirection: "column" }}>
                           <CardContent sx={{ flex: "1 0 auto", pr: 11 }}>
@@ -319,7 +290,7 @@ class Home extends React.Component {
                               Comedy
                             </Typography>
                             <hr className="tv-hr"/>
-                            <Box sx={{ textAlign: "left", pl: 1, pb: 1 }}>
+                            <Box sx={{ fontSize:10,textAlign: "left", pl: 1, pb: 1 }}>
                             The everyday lives of office employees in the Scranton, Pennsylvania branch of the fictional Dunder Mifflin Paper Company.
                             </Box>
                           </CardContent>
@@ -333,9 +304,10 @@ class Home extends React.Component {
                       </Card>
                       </div>
                     </Grid>
+                     
                     <Grid item sx={{ maxWidth: "400px" }} xs={4}>
                     <div className="tv-hover">
-                    <Card sx={{ display: "flex" }}>
+                    <Card sx={{ height:200,display: "flex" }}>
                         <Box sx={{ display: "flex", flexDirection: "column" }}>
                           <CardContent sx={{ flex: "1 0 auto", pr: 11 }}>
                             <Typography sx = {{whiteSpace: 'nowrap',mr:2}}component="div" variant="h5">
@@ -349,7 +321,7 @@ class Home extends React.Component {
                               Animation & Comedy
                             </Typography>
                             <hr className="tv-hr"/>
-                            <Box sx={{ textAlign: "left", pl: 1, pb: 1 }}>
+                            <Box sx={{ fontSize:10,textAlign: "left", pl: 1, pb: 1 }}>
                             Not one to depend on others, Twilight has his work cut out for him procuring both a wife and a child for his mission to infiltrate an elite private school. 
                             </Box>
                           </CardContent>
@@ -363,9 +335,11 @@ class Home extends React.Component {
                       </Card>
                       </div>
                     </Grid>
+
+                  {/*
                     <Grid item sx={{ maxWidth: "400px" }} xs={4}>
                     <div className="tv-hover">
-                    <Card sx={{ display: "flex" }}>
+                    <Card sx={{ height:200,display: "flex" }}>
                         <Box sx={{ display: "flex", flexDirection: "column" }}>
                           <CardContent sx={{ flex: "1 0 auto", pr: 11 }}>
                             <Typography sx={{whiteSpace: 'nowrap'}} component="div" variant="h5">
@@ -380,7 +354,7 @@ class Home extends React.Component {
                               Comedy
                             </Typography>
                             <hr className="tv-hr"/>
-                            <Box sx={{ textAlign: "left", pl: 1, pb: 1 }}>
+                            <Box sx={{ fontSize:10,textAlign: "left", pl: 1, pb: 1 }}>
                             The Pritchett-Dunphy-Tucker clan is a wonderfully large and blended family. They give us an honest and often hilarious look into the sometimes embrace of the modern family.
                             </Box>
                           </CardContent>
@@ -397,7 +371,7 @@ class Home extends React.Component {
 
                     <Grid sx={{ maxWidth: "400px" }} item xs={4}>
                     <div className="tv-hover">
-                      <Card sx={{ display: "flex" }}>
+                      <Card sx={{ height:200,display: "flex" }}>
                         <Box sx={{ display: "flex", flexDirection: "column" }}>
                           <CardContent sx={{ flex: "1 0 auto", pr: 11 }}>
                             <Typography sx={{whiteSpace: 'nowrap',mr:-2}} component="div" variant="h5">
@@ -412,7 +386,7 @@ class Home extends React.Component {
                               Sci-Fi & Fantasy
                             </Typography>
                             <hr className="tv-hr"/>
-                            <Box sx={{ textAlign: "left", pl: 1, pb: 1 }}>
+                            <Box sx={{ fontSize:10,textAlign: "left", pl: 1, pb: 1 }}>
                             After the fall of the Galactic Empire, lawlessness has spread throughout the galaxy. A lone gunfighter makes his way through the outer reaches, earning his keep as a bounty hunter.
                             </Box>
                           </CardContent>
@@ -432,10 +406,9 @@ class Home extends React.Component {
                                   
 
 
-                    {/*                */}
                     <Grid sx={{ maxWidth: "400px" }} item xs={4}>
                     <div className="tv-hover">
-                      <Card sx={{ display: "flex" }}>
+                      <Card sx={{ height:200,display: "flex" }}>
                         <Box sx={{ display: "flex", flexDirection: "column" }}>
                           <CardContent sx={{ flex: "1 0 auto", pr: 11 }}>
                             <Typography sx={{whiteSpace: 'nowrap',mr:-6}} component="div" variant="h5">
@@ -450,7 +423,7 @@ class Home extends React.Component {
                               Comedy
                             </Typography>
                             <hr className="tv-hr"/>
-                            <Box sx={{ textAlign: "left", pl: 1, pb: 1 }}>
+                            <Box sx={{ fontSize:10,textAlign: "left", pl: 1, pb: 1 }}>
                             The funny, heartfelt story of The Kims, a Korean-Canadian family, running a convenience store in downtown Toronto. Mr. and Mrs. Kim immigrated who are now young adults. 
                             </Box>
                           </CardContent>
@@ -464,7 +437,7 @@ class Home extends React.Component {
                       </Card>
                       </div>
                     </Grid>
-
+ */}
 
 
                   </Grid>
@@ -475,16 +448,16 @@ class Home extends React.Component {
             <div className={SEL}>
               <div className="section">
 
-                <h3 style={{color:'white'}}>{text}</h3>
+                <h3 style={{color:'white',fontSize:40}}>{text}</h3>
 
                 {/* <p style={{marginLeft:'-900px',marginTop:'170px',fontSize:'50px',color:'white'}}><i> Browse and purchase movies with us.</i></p> */}
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-                <Box className="grid-spacing" style={{width:'100%',marginTop:'200px'}}sx={{ flexGrow: 1 }}>
-                  <Grid container spacing={10}>
-                    <Grid item sm={6} md={3}>
-                    <Card sx={{ maxWidth: 345 }}>
+                <Box className="grid-spacing" style={{width:'100%',paddingBottom:30}}sx={{ flexGrow: 1 }}>
+                  <Grid container spacing={1}>
+                    <Grid item sm={6} md={3} sx={{marginLeft:-10}}>
+                    <Card sx={{ width: 300 }}>
                       <CardMedia
-                        sx={{ height: 350 }}
+                        sx={{ height: 200 }}
                         image={require("../img/login.jpg")}
                         title="green iguana"
                       />
@@ -492,7 +465,7 @@ class Home extends React.Component {
                         <Typography gutterBottom variant="h5" component="div">
                           Already A User?
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography style = {{fontSize:12}} variant="body2" color="text.secondary">
                         Welcome back! As a valued member of our community, you already have access to our exclusive range of content. Join us and enjoy the ultimate movie purchasing experience. 
                         </Typography>
                       </CardContent>
@@ -501,19 +474,19 @@ class Home extends React.Component {
                       </CardActions>
                     </Card>
                     </Grid>
-                    <Grid item sm={6} md={3}>
-                    <Card sx={{ maxWidth: 345 }}>
+                    <Grid item sm={6} md={3} sx={{marginLeft:20}}>
+                    <Card sx={{ width: 300 }}>
                       <CardMedia
-                        sx={{ height: 350 }}
+                        sx={{ height: 200 }}
                         image={require("../img/register.jpg")}
                       />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                           New Here?
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                        Join the excitement! By registering with us, you'll gain access to a diverse collection of content that's bound to keep you captivated.
-                         Sign up today and dive into a universe of entertainment.                        </Typography>
+                        <Typography style = {{fontSize:12}} variant="body2" color="text.secondary">
+                        By registering with us, you'll gain access to a diverse collection of content that's bound to keep you captivated.
+                         Sign up today and dive into a universe of entertainment. </Typography>
                       </CardContent>
                       <CardActions>
                         <Button size="large"><NavLink to="/register">Register</NavLink></Button>
