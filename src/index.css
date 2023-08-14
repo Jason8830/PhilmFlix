@@ -20,6 +20,7 @@
 .cart{
  display: flex;
  height: 600px;
+ overflow-x: hidden;
 }
 .quantity{
   margin-top: 10px;

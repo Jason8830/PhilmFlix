@@ -30,9 +30,10 @@ const NavMenu = styled.div`
 const StyledNavLink = styled(NavLink)`
 
   font-size: 25px;
-  color: white;
+  color: #A890FE;
   text-decoration: none;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Pacifico';
+
 `;
 
 const NavLogo = styled(NavLink)`
@@ -109,7 +110,7 @@ const NavBar = () => {
         <Nav>
             <NavLogo to="/">
                 FilmFlix
-            <Logo src = {logo}/>
+            <Logo style = {{marginTop:7}} src = {logo}/>
             </NavLogo>
             
 
@@ -119,24 +120,20 @@ const NavBar = () => {
             </StyledNavLink> */}
 
             {accessToken && 
-            <StyledNavLink to="/search">
+            <StyledNavLink style ={{marginTop:12,marginRight:30}} to="/search">
                 Search
             </StyledNavLink>}
-
-
-            {
-            <StyledNavLink to="/search">
-                Search
-            </StyledNavLink>}
-
-            <StyledNavLink to="/cart">
+            {accessToken && 
+            <StyledNavLink style ={{marginTop:12,marginRight:30}} to="/cart">
                 Cart
             </StyledNavLink>
+                }
 
-            
-            <StyledNavLink onClick = {getOrder} to="/order">
+{accessToken && 
+            <StyledNavLink style ={{marginTop:12}} onClick = {getOrder} to="/order">
                 Order
             </StyledNavLink>
+}
             </NavMenu>
 
             <NavButton>

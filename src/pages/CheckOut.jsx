@@ -6,11 +6,12 @@ import CheckoutForm from "./CheckoutForm";
 import "./Checkout.css";
 import {useUser} from "hook/User";
 import {getPaymentIntent} from "backend/billing"
+
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
 // This is your test publishable API key.
 const stripePromise =
- loadStripe("pk_test_51KyK0yBLPT6pzzsYIvE02N9QZHFiIJxQ4IScysMkc5Z4sHjMjmfq3xlXeR0sOkGwFziDjmJwjSFS3Nij0UMUOpJj00JR1jd89E");
+ loadStripe("pk_test_51Nf8rEFUF4CvQtKZisSZFe8f72CyiabdSk5FaLfciMLYpBvGFr1uAm2LTwCN4OeleYur7hHROvHR9H4VXioxxXJA00JYVT29TW");
 
 export default function CheckOut() {
   const [clientSecret, setClientSecret] = useState("");
@@ -48,7 +49,7 @@ export default function CheckOut() {
   };
 
   return (
-    <div>
+    <div className = "hidden" style ={{marginLeft:300,marginTop:100}}>
         <p>Check Out Page</p>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>

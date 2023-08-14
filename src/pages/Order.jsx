@@ -53,13 +53,14 @@ const Order = (props) => {
 
     return (
         <>
-        <div>
+        <div style={{marginTop:100}}>
             <h1 id="order">Order History</h1>
              { props.sales && props.sales.sales.map( element =>
             <div>
                 <div>{element.saleId}</div>
                 <div>{element.orderDate}</div>
-                <div>${(element.total / 100).toFixed(2).toString().toLocaleString("en-US")}</div>
+                <div>${element.total.toFixed(2)}</div>
+                {/* <div>${(element.total / 100).toFixed(2).toString().toLocaleString("en-US")}</div> */}
                 <hr></hr>
              </div>)}  
          {/* { !(Object.keys(sales).length === 0) && sales.map( element =>

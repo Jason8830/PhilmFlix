@@ -83,9 +83,9 @@ const Cart = ({movies}) => {
 
     return (
         <>
-        <div className="cart">
+        <div className="cart" style={{marginTop:150,marginLeft:200}}>
             {/* <p> Total: ${props.items.total.toLocaleString("en-US")}</p> */}
-          <Card sx={{ maxWidth: 1000, mr:100 }}>
+          <Card sx={{ width: 500, mr:100,border:'4px solid #081c34',paddingX:4 }}>
           <CardHeader>
 
           </CardHeader>
@@ -98,18 +98,18 @@ const Cart = ({movies}) => {
         <Typography sx ={{mb:4}} variant="body2" color="text.secondary">
         Please review your order before your purchase. Thank you!
         </Typography>
-  
+        <hr style={{color:'#081c34',marginTop:-20,border:'3px solid #081c34'}}></hr>
           { movieState && movieState.map((movie) => (
                 <>
-                <div key = {movie.movieId}>{movie.movieTitle}
-                </div>
+                <h5 key = {movie.movieId}>{movie.movieTitle}
+                </h5>
                 <div className="quantity">
                 <Box sx ={{backgroundColor: 'primary.light',}}>
-                Quantity: {movie.quantity} Cost: ${movie.unitPrice} 
+                Quantity: {movie.quantity} Cost: ${(movie.unitPrice*movie.quantity).toFixed(2)} 
                 </Box>
                 
-                <Button variant="contained" onClick={()=>handleDeleteItem(movie.movieId)}>Delete</Button>
-        <Button variant="outlined" onClick={()=>handleClickOpen(movie.movieId)}>
+        <Button variant="contained" style = {{marginTop:15,width:100}} onClick={()=>handleDeleteItem(movie.movieId)}>Delete</Button>
+        <Button variant="outlined" style = {{marginTop:15,width:100}} onClick={()=>handleClickOpen(movie.movieId)}>
         Edit
       </Button>
       <Dialog open={open} onClose={handleClose}>
@@ -142,7 +142,7 @@ const Cart = ({movies}) => {
 
 
   
-    <Button onClick={handleBIN} variant="contained" sx={{ marginLeft:-80,maxHeight: 100 }} size="large">Buy Now</Button>
+    <Button onClick={handleBIN} variant="contained" sx={{ marginLeft:-80,maxHeight: 100, width:200 }} size="large">Buy Now</Button>
   
 
     </div>
